@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ronak',
     'tailwind',  # Ensure tailwindcss is included
     'theme',  # Ensure theme is included
+    'django_browser_reload',  # For live reloading during development
 ]
 
 TAILWIND_APP_NAME = 'theme'  # Specify the Tailwind app name
@@ -54,6 +55,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    'django_browser_reload.middleware.BrowserReloadMiddleware',  # Middleware for live reloading
 ]
 
 ROOT_URLCONF = 'ronakwithDjango.urls'
@@ -123,6 +126,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] # Ensure static files are served correctly
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

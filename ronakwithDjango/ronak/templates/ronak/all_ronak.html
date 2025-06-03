@@ -5,5 +5,19 @@
 {% endblock %}
 
 {% block contect %}
-      <h1>Welcome to the Ronak Page</h1>
+      <div class="grid grid-cols-3 gap-4">
+            {% for ronak in ronaks  %}
+                  <div class="ronak-item">
+                        <img class="rounded-2xl" src="{{ronak.image.url}}" alt="">
+                        <h2>{{ ronak.name }}</h2>
+                        <a href="{% url 'ronak_detail' ronak.id %}">
+                              <button
+                                    type="button"
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                    {{ronak.type}} - {{ronak.id}}
+                              </button>   
+                        </a>
+                  </div>
+            {% endfor %}
+      </div>
 {% endblock %}
